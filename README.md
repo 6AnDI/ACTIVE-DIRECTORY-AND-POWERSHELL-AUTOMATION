@@ -48,6 +48,7 @@ To allow isolated internal clients to securely access the internet, the Routing 
 Instead of manually creating accounts, a custom PowerShell script was developed to parse a CSV file containing 119 employee records. The script dynamically created Organizational Units (OUs) based on department data, generated Active Directory user accounts, assigned secure passwords, and enforced a mandatory password reset policy upon first login.
 
 [View the Bulk User Import PowerShell Script](Powershell%20script.ps1)
+[View the Employee CSV Data Template](user_accounts_final.csv)
 
 ![Active Directory Users and OUs](images/all%205%20OUs%20added.png) 
 *Active Directory Users and Computers displaying the dynamically generated OUs and imported user accounts.*
