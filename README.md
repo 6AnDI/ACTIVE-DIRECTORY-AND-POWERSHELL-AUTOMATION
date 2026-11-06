@@ -3,7 +3,7 @@
 ### 📌 Project Overview
 This project demonstrates the end-to-end deployment and configuration of an enterprise network environment using Hyper-V, Windows Server, and Windows 10. The lab simulates a corporate IT infrastructure, featuring a fully functional Active Directory Domain Services (AD DS) forest, automated user provisioning via PowerShell, and a dual-homed network architecture utilizing DHCP and NAT routing.
 
-### 🛠️ Technologies & Services Used
+### Technologies & Services Used
 - Hyper-V (Type 1 Hypervisor virtualization)
 - Windows Server 2025 (Domain Controller / Network Gateway)
 - Windows 10 (Client Machine)
@@ -13,23 +13,24 @@ This project demonstrates the end-to-end deployment and configuration of an ente
 - PowerShell (Bulk administration & automation)
 
 
-### 🏗️ Architecture & Network Design
+### Architecture & Network Design
 The environment consists of an isolated internal private network that securely routes to the internet through the Domain Controller acting as a NAT gateway.
 - Domain Name: Automation.Com
 - Domain Controller (DC01):
-  - Internal Interface (Private Switch): 172.16.0.10 (Static)
+  - Internal Interface (Private Switch): **172.16.0.10 (Static)**
   - External Interface (Public/Default Switch): DHCP from host network
-- Client Network (DHCP Scope): 172.16.0.100 – 172.16.0.200
+- Client Network (DHCP Scope): **172.16.0.100 – 172.16.0.200**
 
 
-🚀 ### Deployment Phases
+### 🚀 Deployment Phases
 
 ### Phase 1: Hyper-V Virtual Switch Configuration
-To create a secure and isolated lab environment, the Hyper-V networking infrastructure was configured first. An Internal/Private Virtual Switch was created to host the local domain traffic (172.16.0.0/24). The Domain Controller was provisioned with two network adapters: one connected to the external network for internet access, and one connected to the internal switch to serve the client machines.
+To create a secure and isolated lab environment, the Hyper-V networking infrastructure was configured first. An Internal/Private Virtual Switch was created to host the local domain traffic **(172.16.0.0/24)**. The Domain Controller was provisioned with two network adapters: one connected to the external network for internet access, and one connected to the internal switch to serve the client machines.
 
 ![Virtual Switch Configuration 1](images/Virtual%20switch1.png) 
 ![Virtual Switch Configuration 2](images/Virtual%20switch2.png) 
 *Hyper-V Virtual Switch Manager displaying the internal lab network configuration.*
+
 
 ### Phase 2: Core Infrastructure & DHCP Configuration
 Promoted the Windows Server to a Domain Controller to establish the Automation.Com forest. Configured the DHCP Server role to dynamically lease IP addresses to client machines on the internal virtual switch, configuring the DC as the default gateway and DNS server.
@@ -63,15 +64,14 @@ A Windows 10 virtual machine was deployed on the internal switch. It successfull
 *Command Prompt verification showing successful domain authentication (whoami) and system domain membership (systeminfo).*
 
 
-🏆 Strategic Outcomes & Key Achievements
+### 🏆 Strategic Outcomes & Key Achievements
 
 1. **90% Deployment Acceleration** – Eradicated manual data entry by engineering a PowerShell solution that dynamically provisioned 150+ user accounts and organizational units.
 2. **99.9% Network Reliability** – Architected a highly stable, isolated Hyper-V environment utilizing integrated DHCP and NAT routing for continuous internal connectivity.
 3. **Hardened Access Controls** – Deployed stringent, role-based identity management policies to secure domain resources and enforce strict compliance standards.
 4. **Enterprise Environment Replication** – Validated the infrastructure by binding Windows 10 endpoints to the AD domain, successfully proving network authentication and centralized security enforcement.
 
-
-🔮 Future Enhancements & Roadmap
+### Future Enhancements & Roadmap
 
 1. **Advanced GPO Enforcement**: Roll out comprehensive Group Policy Objects to lock down endpoint control panels, block removable media, and mandate complex password standards.
 2. **Active Threat Hunting (EDR)**: Deploy endpoint detection sensors onto client machines to gather network telemetry and practice SOC incident response workflows.
